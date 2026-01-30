@@ -1,13 +1,43 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Helmet } from "react-helmet-async";
+import { Navbar } from "@/components/layout/Navbar";
+import { Footer } from "@/components/layout/Footer";
+import { HeroSection } from "@/components/home/HeroSection";
+import { PastWorkMarquee } from "@/components/home/PastWorkMarquee";
+import { AboutSection } from "@/components/home/AboutSection";
+import { ServicesSection } from "@/components/home/ServicesSection";
+import { ProjectsSection } from "@/components/home/ProjectsSection";
+import { TestimonialsSection } from "@/components/home/TestimonialsSection";
+import { TeamSection } from "@/components/home/TeamSection";
+import { FAQSection } from "@/components/home/FAQSection";
+import { CTASection } from "@/components/shared/CTASection";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Buildio* | Architecture & Interior Design</title>
+        <meta
+          name="description"
+          content="We blend innovative design with timeless craftsmanship to create environments that inspire and endure. Transform your space with Buildio*."
+        />
+      </Helmet>
+
+      <Navbar />
+      
+      <main>
+        <HeroSection />
+        <PastWorkMarquee />
+        <AboutSection />
+        <ServicesSection />
+        <ProjectsSection />
+        <TestimonialsSection />
+        <TeamSection />
+        <FAQSection />
+        <CTASection />
+      </main>
+
+      <Footer />
+    </>
   );
 };
 
