@@ -15,16 +15,16 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Buildio* | Architecture & Interior Design</title>
+        <title>MonoArch* | Architecture & Interior Design</title>
         <meta
           name="description"
-          content="We blend innovative design with timeless craftsmanship to create environments that inspire and endure. Transform your space with Buildio*."
+          content="We blend innovative design with timeless craftsmanship to create environments that inspire and endure. Transform your space with MonoArch*."
         />
       </Helmet>
 
       <Navbar />
-      
-      <main>
+
+      <main className="overflow-hidden">
         <HeroSection />
         <PastWorkMarquee />
         <AboutSection />

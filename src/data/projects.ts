@@ -21,19 +21,19 @@ export const projects: Project[] = [
   {
     slug: "modern-farmhouse-revival",
     title: "Modern Farmhouse Revival Design",
-    description: "A seamless blend of rustic charm and contemporary elegance, transforming a traditional farmhouse into a modern sanctuary.",
+    description: "A complete transformation of a dated residence into a bright, open farmhouse-style home. We redesigned the layout for better flow modern fixtures, and created a harmonious blend of rustic charm and modern functionality throughout the space.",
     type: "Residential Renovation",
     location: "Austin, Texas",
     area: "2,300 sq ft",
-    heroImage: "/images/projects/farmhouse-hero.jpg",
-    cardImage: "/images/projects/farmhouse-card.jpg",
+    heroImage: "/images/project_details/project-1-image-1.jpg",
+    cardImage: "/images/project-image-1.avif",
     galleryImages: [
-      "/images/projects/farmhouse-1.jpg",
-      "/images/projects/farmhouse-2.jpg",
-      "/images/projects/farmhouse-3.jpg",
-      "/images/projects/farmhouse-4.jpg",
-      "/images/projects/farmhouse-5.jpg",
-      "/images/projects/farmhouse-6.jpg"
+      "/images/project_details/project-1-image-1.jpg",
+      "/images/project_details/project-1-image-2.jpg",
+      "/images/project_details/project-1-image-3.jpg",
+      "/images/project_details/project-1-image-4.jpg",
+      "/images/project_details/project-1-image-5.jpg",
+      "/images/project_details/project-1-image-6.jpg"
     ],
     sections: [
       {
@@ -54,21 +54,21 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "urban-loft-transformation",
-    title: "Urban Loft Transformation",
-    description: "Converting an industrial warehouse space into a sophisticated urban residence with open-concept living.",
-    type: "Loft Conversion",
-    location: "Brooklyn, New York",
-    area: "1,800 sq ft",
-    heroImage: "/images/projects/loft-hero.jpg",
-    cardImage: "/images/projects/loft-card.jpg",
+    slug: "mediterranean-villa-refresh",
+    title: "Mediterranean Villa Refresh",
+    description: "A sun-soaked villa received a modern yet respectful upgrade. With a focus on natural materials, elegant minimalism, and spatial flow, we revived this spacious property into a timeless family retreat that honors Mediterranean charm while embracing modern living.",
+    type: "Villa Renovation",
+    location: "Marbella, Spain",
+    area: "3,800 sq ft",
+    heroImage: "/images/project_details/project-2-image-1.jpg",
+    cardImage: "/images/project-image-2.jpg",
     galleryImages: [
-      "/images/projects/loft-1.jpg",
-      "/images/projects/loft-2.jpg",
-      "/images/projects/loft-3.jpg",
-      "/images/projects/loft-4.jpg",
-      "/images/projects/loft-5.jpg",
-      "/images/projects/loft-6.jpg"
+      "/images/project_details/project-2-image-1.jpg",
+      "/images/project_details/project-2-image-2.jpg",
+      "/images/project_details/project-2-image-3.jpg",
+      "/images/project_details/project-2-image-4.jpg",
+      "/images/project_details/project-2-image-5.jpg",
+      "/images/project_details/project-2-image-6.jpg"
     ],
     sections: [
       {
@@ -89,21 +89,21 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "coastal-retreat-residence",
-    title: "Coastal Retreat Residence",
-    description: "A beachfront home designed to blur the lines between indoor living and ocean views.",
-    type: "New Construction",
-    location: "Malibu, California",
-    area: "3,500 sq ft",
-    heroImage: "/images/projects/coastal-hero.jpg",
-    cardImage: "/images/projects/coastal-card.jpg",
+    slug: "modern-living-room-redesign",
+    title: "Modern Living Room Redesign",
+    description: "A compact city living room was completely reimagined to enhance comfort and express modern elegance. Through smart furnishing, subtle color tones, and thoughtful textures, we created a welcoming, cozy interior that feels both stylish and deeply livable.",
+    type: "Interior Design",
+    location: "Chicago, Illinois",
+    area: "450 sq ft",
+    heroImage: "/images/project_details/project-3-image-1.jpg",
+    cardImage: "/images/project-image-3.jpg",
     galleryImages: [
-      "/images/projects/coastal-1.jpg",
-      "/images/projects/coastal-2.jpg",
-      "/images/projects/coastal-3.jpg",
-      "/images/projects/coastal-4.jpg",
-      "/images/projects/coastal-5.jpg",
-      "/images/projects/coastal-6.jpg"
+      "/images/project_details/project-3-image-1.jpg",
+      "/images/project_details/project-3-image-2.jpg",
+      "/images/project_details/project-3-image-3.jpg",
+      "/images/project_details/project-3-image-4.jpg",
+      "/images/project_details/project-3-image-5.jpg",
+      "/images/project_details/project-3-image-6.jpg"
     ],
     sections: [
       {
@@ -124,21 +124,21 @@ export const projects: Project[] = [
     ]
   },
   {
-    slug: "minimalist-city-apartment",
-    title: "Minimalist City Apartment",
-    description: "A compact urban space transformed through thoughtful design into an airy, functional home.",
-    type: "Apartment Renovation",
-    location: "San Francisco, California",
-    area: "950 sq ft",
-    heroImage: "/images/projects/apartment-hero.jpg",
-    cardImage: "/images/projects/apartment-card.jpg",
+    slug: "tranquil-garden-retreat",
+    title: "Tranquil Garden Retreat Space",
+    description: "We transformed a plain backyard into a peaceful, low-maintenance outdoor retreat. With natural textures, layered greenery, and thoughtful zoning, the landscape now invites relaxation, gathering, and quiet connection with nature—right at home.",
+    type: "Landscape Design",
+    location: "Napa Valley, California",
+    area: "1,200 sq ft",
+    heroImage: "/images/project_details/project-4-image-1.jpg",
+    cardImage: "/images/project-image-4.png",
     galleryImages: [
-      "/images/projects/apartment-1.jpg",
-      "/images/projects/apartment-2.jpg",
-      "/images/projects/apartment-3.jpg",
-      "/images/projects/apartment-4.jpg",
-      "/images/projects/apartment-5.jpg",
-      "/images/projects/apartment-6.jpg"
+      "/images/project_details/project-4-image-1.jpg",
+      "/images/project_details/project-4-image-2.jpg",
+      "/images/project_details/project-4-image-3.jpg",
+      "/images/project_details/project-4-image-4.jpg",
+      "/images/project_details/project-4-image-5.jpg",
+      "/images/project_details/project-4-image-6.jpg"
     ],
     sections: [
       {
@@ -165,15 +165,15 @@ export const projects: Project[] = [
     type: "Historic Restoration",
     location: "Boston, Massachusetts",
     area: "2,800 sq ft",
-    heroImage: "/images/projects/townhouse-hero.jpg",
-    cardImage: "/images/projects/townhouse-card.jpg",
+    heroImage: "/images/project_details/project-1-image-5.jpg",
+    cardImage: "/images/project_details/project-1-image-6.jpg",
     galleryImages: [
-      "/images/projects/townhouse-1.jpg",
-      "/images/projects/townhouse-2.jpg",
-      "/images/projects/townhouse-3.jpg",
-      "/images/projects/townhouse-4.jpg",
-      "/images/projects/townhouse-5.jpg",
-      "/images/projects/townhouse-6.jpg"
+      "/images/project_details/project-1-image-1.jpg",
+      "/images/project_details/project-1-image-2.jpg",
+      "/images/project_details/project-1-image-3.jpg",
+      "/images/project_details/project-1-image-4.jpg",
+      "/images/project_details/project-1-image-5.jpg",
+      "/images/project_details/project-1-image-6.jpg"
     ],
     sections: [
       {

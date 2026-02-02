@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
+import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+import { cn } from "@/lib/utils";
 
 interface CTASectionProps {
   title?: string;
@@ -10,38 +12,43 @@ interface CTASectionProps {
 }
 
 export const CTASection = ({
-  title = "Ready to transform your space?",
-  description = "Let's create something extraordinary together. Get in touch to start your journey.",
-  buttonText = "Get in touch",
+  description = "We'd love to hear from you. Reach out to discuss your ideas, get a quote, or book a consultation.",
+  buttonText = "Get a free quote!",
   buttonLink = "/contact",
-  backgroundImage = "/images/cta-bg.jpg",
+  backgroundImage = "/images/cta-image.jpg",
 }: CTASectionProps) => {
+  const { ref, isVisible } = useScrollAnimation();
+
   return (
-    <section className="py-20 px-4">
-      <div className="container max-w-6xl">
-        <div className="relative rounded-3xl overflow-hidden min-h-[400px] md:min-h-[500px]">
+    <section className="py-12 lg:py-20 px-6">
+      <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
+        <div className="relative rounded-[24px] md:rounded-[40px] overflow-hidden min-h-[350px] md:min-h-[500px] flex items-center justify-center">
           {/* Background Image */}
           <div
             className="absolute inset-0 bg-cover bg-center"
             style={{ backgroundImage: `url(${backgroundImage})` }}
           />
-          
-          {/* Gradient Overlay */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent" />
-          
-          {/* Content */}
-          <div className="relative h-full flex items-end justify-center p-8 md:p-12">
-            <div className="glass-strong rounded-2xl p-8 md:p-10 max-w-xl text-center">
-              <h2 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-4">
-                {title}
+
+          {/* Content Box */}
+          <div className="relative z-10 w-full px-4">
+            <div
+              ref={ref}
+              className={cn(
+                "bg-black/70 backdrop-blur-sm rounded-[24px] md:rounded-[32px] p-6 md:p-10 lg:p-16 max-w-3xl mx-auto text-center border border-white/5 opacity-0",
+                isVisible && "animate-fade-in-up opacity-100"
+              )}
+            >
+              <h2 className="text-[28px] md:text-5xl lg:text-6xl font-medium text-white mb-4 md:mb-6 leading-tight">
+                Let's create a <br className="hidden md:block" />
+                space you'll love
               </h2>
-              <p className="text-muted-foreground mb-6">
+              <p className="text-white/80 text-[15px] md:text-lg mb-6 md:mb-8 leading-relaxed max-w-lg mx-auto">
                 {description}
               </p>
               <Button
                 asChild
                 size="lg"
-                className="rounded-full px-8"
+                className="bg-white text-black text-sm md:text-[17px] border border-transparent hover:bg-[#5c5b59] hover:text-white hover:border-[#5c5b59] transition-all duration-300 rounded-full px-6 h-10 md:h-12 font-medium"
               >
                 <Link to={buttonLink}>{buttonText}</Link>
               </Button>

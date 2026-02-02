@@ -6,48 +6,47 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 import { cn } from "@/lib/utils";
 
 const clientLogos = [
-  "Archviz", "DesignCo", "BuildPro", "SpaceWorks", "HomeStyle", "Interior+"
+  "/images/logo-1.jpg",
+  "/images/logo-2.jpg",
+  "/images/logo-3.jpg",
+  "/images/logo-4.jpg",
 ];
 
-const floatingTags = [
-  { label: "Smart planning", position: "top-8 left-4" },
-  { label: "Seamless process", position: "top-1/3 right-4" },
-  { label: "Client satisfaction", position: "bottom-1/4 left-8" },
-];
+
 
 export const HeroSection = () => {
   const { ref, isVisible } = useScrollAnimation();
 
   return (
-    <section className="min-h-screen pt-32 pb-20 px-4">
-      <div className="container">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
+    <section className="min-h-[auto] lg:min-h-[90vh] pt-24 lg:pt-32 pb-12 lg:pb-20 px-6 flex items-center bg-[#141414] overflow-hidden relative">
+
+      <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
+        <div className="grid lg:grid-cols-[50%_50%] gap-12 lg:gap-0 items-center">
           {/* Left Content */}
           <div
             ref={ref}
             className={cn(
-              "max-w-xl opacity-0",
+              "flex flex-col items-center lg:items-start text-center lg:text-left opacity-0",
               isVisible && "animate-fade-in-up opacity-100"
             )}
           >
-            <SectionBadge className="mb-6">
+            <SectionBadge className="mb-8 border-white/10 bg-white/5 text-[14px] lg:text-[16px] leading-[24px] font-normal text-white/80">
               #1 in Smart, Stylish Spaces
             </SectionBadge>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-semibold text-foreground leading-tight mb-6">
-              Crafting spaces that match your style and needs
+            <h1 className="text-4xl md:text-5xl lg:text-[60px] font-medium text-white leading-tight lg:leading-[72px] mb-6 lg:mb-4 tracking-tight max-w-xl">
+              Crafting spaces <br className="hidden lg:block" /> that match your <br className="hidden lg:block" /> style and needs
             </h1>
 
-            <p className="text-lg text-muted-foreground mb-8">
-              We blend innovative design with timeless craftsmanship to create
-              environments that inspire and endure. Your vision, our expertise.
+            <p className="text-base md:text-lg lg:text-xl text-white/60 mb-8 lg:mb-10 max-w-xl leading-relaxed lg:leading-[32px] font-normal mx-auto lg:mx-0">
+              Building new or upgrading? We craft stylish, inspiring spaces that feel uniquely yours.
             </p>
 
-            <div className="flex flex-col sm:flex-row gap-4 mb-12">
+            <div className="flex flex-row flex-nowrap md:flex-wrap justify-center lg:justify-start gap-3 md:gap-4 mb-12">
               <Button
                 asChild
                 size="lg"
-                className="rounded-full px-8 bg-foreground text-background hover:bg-foreground/90"
+                className="h-12 px-4 md:px-6 rounded-full bg-white border-2 hover:border-[#565656] text-black text-md font-medium hover:bg-[#434343] hover:text-white whitespace-nowrap"
               >
                 <Link to="/contact">Get in touch</Link>
               </Button>
@@ -55,74 +54,74 @@ export const HeroSection = () => {
                 asChild
                 size="lg"
                 variant="outline"
-                className="rounded-full px-8"
+                className="inline-flex items-center justify-center h-12 px-4 md:px-6 rounded-full bg-[#2a2a2a] border-2 border-[#404040] text-white text-md font-medium hover:bg-[#4c4c4c] transition-all w-fit group whitespace-nowrap"
               >
                 <Link to="/#services">View services</Link>
               </Button>
             </div>
 
             {/* Client Logos Marquee */}
-            <div className="relative overflow-hidden gradient-mask-edges">
-              <div className="flex gap-8 animate-marquee">
-                {[...clientLogos, ...clientLogos].map((logo, index) => (
-                  <span
+            <div className="hidden lg:block w-full max-w-xl overflow-hidden relative mx-auto lg:mx-0">
+              <div className="absolute left-0 top-0 bottom-0 w-8 lg:w-12 bg-gradient-to-r from-background to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-8 lg:w-12 bg-gradient-to-l from-background to-transparent z-10" />
+
+              <div className="flex gap-12 lg:gap-16 animate-marquee w-max">
+                {/* Duplicate 3 times for smooth infinite scroll */}
+                {[...clientLogos, ...clientLogos, ...clientLogos].map((logo, index) => (
+                  <img
                     key={index}
-                    className="text-muted-foreground/50 text-sm font-medium whitespace-nowrap"
-                  >
-                    {logo}
-                  </span>
+                    src={logo}
+                    alt="Client logo"
+                    className="h-8 md:h-24 lg:h-28 w-auto object-contain opacity-100 grayscale hover:opacity-80 transition-opacity"
+                  />
                 ))}
               </div>
             </div>
           </div>
 
           {/* Right Image */}
-          <div className="relative">
-            <div className="relative rounded-t-[120px] rounded-b-[40px] overflow-hidden aspect-[3/4] bg-card">
+          <div className="relative h-full flex items-center justify-center lg:justify-center">
+            <div className="relative w-full max-w-[320px] md:max-w-[400px] lg:max-w-[500px] aspect-[3.5/4.5] rounded-t-[200px] lg:rounded-t-[400px] rounded-b-[30px] lg:rounded-b-[40px] overflow-hidden bg-[#1f1f1f]">
               <img
-                src="/images/hero-main.jpg"
-                alt="Modern interior design"
-                className="w-full h-full object-cover"
+                src="/images/Home_Hero.jpg"
+                alt="Modern villa with pool"
+                className="w-full h-full object-cover "
               />
 
-              {/* Floating Tags */}
-              {floatingTags.map((tag, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "absolute glass px-4 py-2 rounded-full text-sm text-foreground",
-                    tag.position
-                  )}
-                >
-                  <span className="inline-block w-2 h-2 bg-success rounded-full mr-2" />
-                  {tag.label}
-                </div>
-              ))}
 
               {/* Rating Card */}
-              <div className="absolute bottom-6 right-6 glass-strong rounded-2xl p-4">
-                <div className="flex -space-x-2 mb-2">
+              <div className="absolute bottom-4 left-1/2 -translate-x-1/2 lg:bottom-8 bg-[#1f1f1fa6] backdrop-blur-[10px] border border-white/10 p-4 lg:p-6 rounded-[24px] lg:rounded-[32px] max-w-[200px] lg:max-w-[260px] shadow-2xl w-full">
+                <div className="flex -space-x-2 lg:-space-x-3 mb-3 lg:mb-5 justify-center">
                   {[1, 2, 3, 4].map((i) => (
                     <div
                       key={i}
-                      className="w-8 h-8 rounded-full bg-muted border-2 border-card"
-                    />
+                      className="w-8 h-8 lg:w-12 lg:h-12 rounded-full border border-white/10 overflow-hidden bg-[#2a2a2a]"
+                    >
+                      <img
+                        src={`/images/review-${i}.jpg`}
+                        className="w-full h-full object-cover"
+                        alt="Client avatar"
+                      />
+                    </div>
                   ))}
                 </div>
-                <div className="flex items-center gap-1 mb-1">
+                <div className="flex items-center justify-center gap-1 mb-2 lg:mb-3">
                   {[1, 2, 3, 4, 5].map((i) => (
                     <Star
                       key={i}
-                      className="w-4 h-4 fill-warning text-warning"
+                      className="w-4 h-4 lg:w-6 lg:h-6 fill-white text-white"
                     />
                   ))}
                 </div>
-                <p className="text-xs text-muted-foreground">
-                  Rated 5 Stars by 2k+ happy clients
+                <p className="text-[14px] lg:text-[18px] font-medium text-white text-center leading-snug">
+                  Rated 5 Stars by <br />
+                  <span className="font-normal text-white">2k+ happy clients</span>
                 </p>
               </div>
             </div>
           </div>
+
+
         </div>
       </div>
     </section>

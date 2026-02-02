@@ -15,7 +15,7 @@ export const teamMembers: TeamMember[] = [
     id: "michael-carter",
     name: "Michael Carter",
     role: "Founder & Lead Architect",
-    image: "/images/team/michael.jpg",
+    image: "/images/team-1.jpg",
     socials: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -26,7 +26,7 @@ export const teamMembers: TeamMember[] = [
     id: "sarah-chen",
     name: "Sarah Chen",
     role: "Senior Interior Designer",
-    image: "/images/team/sarah.jpg",
+    image: "/images/team-2.jpg",
     socials: {
       twitter: "https://twitter.com",
       linkedin: "https://linkedin.com",
@@ -37,7 +37,7 @@ export const teamMembers: TeamMember[] = [
     id: "james-wilson",
     name: "James Wilson",
     role: "Project Manager",
-    image: "/images/team/james.jpg",
+    image: "/images/team-3.jpg",
     socials: {
       linkedin: "https://linkedin.com",
       instagram: "https://instagram.com"

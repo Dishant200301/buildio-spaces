@@ -1,5 +1,21 @@
-import { Twitter, Linkedin, Instagram } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 import type { TeamMember } from "@/data/team";
+
+// Custom X icon since it might not be in the Lucide version used or for specific styling
+const XIcon = ({ className }: { className?: string }) => (
+  <svg
+    viewBox="0 0 24 24"
+    fill="none"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+    className={className}
+  >
+    <path d="M4 4l11.733 16h4.267l-11.733 -16z" />
+    <path d="M4 20l6.768 -6.768m2.46 -2.46l6.772 -6.772" />
+  </svg>
+);
 
 interface TeamCardProps {
   member: TeamMember;
@@ -7,53 +23,48 @@ interface TeamCardProps {
 
 export const TeamCard = ({ member }: TeamCardProps) => {
   return (
-    <div className="group">
-      <div className="relative overflow-hidden rounded-t-[80px] rounded-b-3xl bg-card aspect-[3/4]">
+    <div className="bg-[#1f1f1f] rounded-[32px] rounded-t-[200px] p-4 pb-10 flex flex-col items-center text-center group transition-transform duration-300">
+      {/* Image */}
+      <div className="w-full aspect-square rounded-t-[200px] rounded-b-[40px] overflow-hidden mb-8 bg-muted">
         <img
           src={member.image}
           alt={member.name}
-          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
         />
       </div>
-      
-      <div className="text-center mt-6">
-        <h3 className="text-xl font-semibold text-foreground mb-1">
-          {member.name}
-        </h3>
-        <p className="text-muted-foreground mb-4">{member.role}</p>
-        
-        <div className="flex items-center justify-center gap-4">
-          {member.socials.twitter && (
-            <a
-              href={member.socials.twitter}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Twitter className="w-5 h-5" />
-            </a>
-          )}
-          {member.socials.linkedin && (
-            <a
-              href={member.socials.linkedin}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Linkedin className="w-5 h-5" />
-            </a>
-          )}
-          {member.socials.instagram && (
-            <a
-              href={member.socials.instagram}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-muted-foreground hover:text-foreground transition-colors"
-            >
-              <Instagram className="w-5 h-5" />
-            </a>
-          )}
-        </div>
+
+      {/* Content */}
+      <h3 className="text-xl font-medium text-white mb-1">
+        {member.name}
+      </h3>
+      <p className="text-sm text-white/50 mb-6 font-light">{member.role}</p>
+
+      {/* Socials */}
+      <div className="flex items-center justify-center gap-5">
+        <a
+          href={member.socials.twitter || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/60 hover:text-white transition-colors"
+        >
+          <XIcon className="w-5 h-5" />
+        </a>
+        <a
+          href={member.socials.instagram || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/60 hover:text-white transition-colors"
+        >
+          <Instagram className="w-5 h-5" />
+        </a>
+        <a
+          href={member.socials.linkedin || "#"}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-white/60 hover:text-white transition-colors"
+        >
+          <Linkedin className="w-5 h-5" />
+        </a>
       </div>
     </div>
   );

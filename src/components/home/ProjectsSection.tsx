@@ -15,9 +15,9 @@ interface ProjectsSectionProps {
 }
 
 export const ProjectsSection = ({
-  badge = "Our Projects",
-  title = "Explore projects that redefine living",
-  description = "Discover curated spaces brought to life through creativity and purpose.",
+  badge = "Recent work",
+  title = "A Showcase of our recent projects",
+  description = "From idea to execution, our work is made to elevate everyday living.",
   showViewAll = true,
   limit = 3,
 }: ProjectsSectionProps) => {
@@ -25,19 +25,19 @@ export const ProjectsSection = ({
   const featuredProjects = getFeaturedProjects(limit);
 
   return (
-    <section className="py-20 px-4" id="projects">
-      <div className="container">
+    <section className="py-12 md:py-20 px-6" id="projects">
+      <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
         <SectionHeader
           badge={badge}
           title={title}
           description={description}
-          className="mb-16"
+          className="mb-12 md:mb-16 lg:mb-24"
         />
 
         <div
           ref={ref}
           className={cn(
-            "space-y-8 opacity-0",
+            "space-y-8 md:space-y-12 opacity-0",
             isVisible && "animate-fade-in-up opacity-100"
           )}
         >
@@ -47,10 +47,13 @@ export const ProjectsSection = ({
         </div>
 
         {showViewAll && (
-          <div className="text-center mt-12">
-            <Button asChild variant="outline" size="lg" className="rounded-full px-8">
-              <Link to="/projects">View all projects</Link>
-            </Button>
+          <div className="text-center mt-12 md:mt-24">
+            <Link
+              to="/projects"
+              className="inline-flex items-center justify-center h-12 px-6 rounded-full bg-[#2a2a2a] border-2 border-[#404040] text-white text-md font-medium hover:bg-[#4c4c4c] transition-all w-fit group"
+            >
+              View all projects
+            </Link>
           </div>
         )}
       </div>
@@ -64,23 +67,25 @@ interface ProjectCardProps {
 
 const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
-    <div className="bg-card rounded-3xl overflow-hidden">
-      <div className="grid lg:grid-cols-5 gap-6 p-6 md:p-8">
+    <div className="bg-[#1f1f1f] rounded-[24px] md:rounded-[40px] overflow-hidden p-6 md:p-12 transition-transform duration-300">
+      <div className="grid lg:grid-cols-[1.8fr_1fr] gap-8 md:gap-16 items-center">
         {/* Content */}
-        <div className="lg:col-span-3 flex flex-col justify-center">
-          <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+        <div className="flex flex-col pr-0 lg:pr-8 items-start text-left">
+          <h3 className="text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-4 leading-tight lg:leading-[48px]">
             {project.title}
           </h3>
-          <p className="text-muted-foreground mb-6">{project.description}</p>
+          <p className="text-muted-foreground text-base md:text-lg mb-8 leading-relaxed line-clamp-3">
+            {project.description}
+          </p>
 
           {/* Meta Info */}
-          <div className="flex flex-wrap gap-4 mb-6">
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <Building2 className="w-4 h-4" />
+          <div className="flex flex-wrap justify-start gap-x-6 gap-y-3 mb-8 md:mb-10">
+            <div className="flex items-center gap-2 text-sm font-medium text-white/70">
+              <Building2 className="w-4 h-4 text-white/50" />
               {project.type}
             </div>
-            <div className="flex items-center gap-2 text-sm text-muted-foreground">
-              <MapPin className="w-4 h-4" />
+            <div className="flex items-center gap-2 text-sm font-medium text-white/70">
+              <MapPin className="w-4 h-4 text-white/50" />
               {project.location}
             </div>
           </div>
@@ -88,22 +93,19 @@ const ProjectCard = ({ project }: ProjectCardProps) => {
           {/* CTA */}
           <Link
             to={`/projects/${project.slug}`}
-            className="inline-flex items-center gap-2 text-foreground hover:gap-3 transition-all w-fit"
+            className="inline-flex items-center justify-center h-12 px-6 rounded-full bg-white/5 border border-white/10 text-white text-sm font-medium hover:bg-white hover:text-black transition-all w-fit group"
           >
-            <span className="glass px-4 py-2 rounded-full text-sm">
-              View in detail
-            </span>
-            <ArrowRight className="w-4 h-4" />
+            View in detail
           </Link>
         </div>
 
         {/* Image */}
-        <div className="lg:col-span-2">
-          <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-muted">
+        <div className="relative mb-2 lg:mb-0 w-full">
+          <div className="aspect-[4/5] md:aspect-square lg:aspect-[4/5] w-full max-w-[320px] md:max-w-[400px] lg:max-w-none mx-auto lg:mx-0 rounded-t-[160px] md:rounded-t-[200px] lg:rounded-t-[250px] rounded-b-[40px] overflow-hidden bg-muted">
             <img
               src={project.cardImage}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
             />
           </div>
         </div>

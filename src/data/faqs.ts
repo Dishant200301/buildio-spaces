@@ -7,27 +7,27 @@ export interface FAQ {
 export const faqs: FAQ[] = [
   {
     id: "faq-1",
-    question: "How long does a typical project take from start to finish?",
-    answer: "Project timelines vary based on scope and complexity. A simple room refresh might take 4-6 weeks, while a full home renovation typically spans 4-6 months. New construction projects can take 12-18 months. During our initial consultation, we'll provide a detailed timeline tailored to your specific project."
+    question: "Why should I hire a professional interior designer?",
+    answer: "Hiring a professional ensures your space is not only beautiful but functional and tailored to your lifestyle. We bring expertise in space planning, access to exclusive trade resources, and project management skills that save you time and prevent costly mistakes. We translate your vision into a cohesive reality that adds long-term value to your property."
   },
   {
     id: "faq-2",
-    question: "What is your design process like?",
-    answer: "Our process begins with a discovery phase where we learn about your needs, preferences, and budget. We then develop initial concepts, refine them based on your feedback, and create detailed plans for execution. Throughout, we maintain open communication and regular check-ins to ensure your vision is realized."
+    question: "How long does a typical renovation or landscaping project take?",
+    answer: "Timelines vary by scope. A single room refresh might take 6-8 weeks, while full-home renovations or comprehensive landscape projects typically range from 4 to 8 months. During our initial consultation, we provide a detailed project roadmap with realistic milestones so you know exactly what to expect."
   },
   {
     id: "faq-3",
-    question: "Do you work with clients remotely?",
-    answer: "Yes! While we love meeting clients in person, we've successfully completed projects across the country through virtual consultations. Using video calls, digital mood boards, and 3D renderings, we can collaborate effectively regardless of location."
+    question: "Can I be actively involved in the design process?",
+    answer: "Absolutely. We view design as a collaborative partnership. Your input at key stages—concept review, material selection, and layout approval—is vital. Whether you want to be involved in every detail or prefer to approve major decisions and let us handle the rest, we cater our process to your preferred level of engagement."
   },
   {
     id: "faq-4",
-    question: "What's included in your pricing?",
-    answer: "Our fees cover design consultation, space planning, concept development, detailed drawings, material specifications, and project management. Furniture, materials, and contractor costs are typically separate. We provide transparent pricing upfront so there are no surprises."
+    question: "What materials do you usually use for outdoor spaces?",
+    answer: "We prioritize durability and natural beauty. Our material palette often features weather-resistant hardwoods (like teak or ipe), natural stone (granite, limestone), corten steel, and high-performance outdoor fabrics. We select sustainable materials that age gracefully and withstand the specific climate conditions of your location."
   },
   {
     id: "faq-5",
-    question: "Can you work within my budget?",
-    answer: "Absolutely. We work with a range of budgets and are skilled at prioritizing investments for maximum impact. During our initial conversation, we'll discuss your budget openly and develop a plan that delivers beautiful results within your means."
+    question: "How do I begin a new home project with your team?",
+    answer: "Starting is simple. Reach out through our contact form to schedule a discovery call. We'll discuss your goals, budget, and timeline. If we're a good fit, we'll arrange an on-site consultation to assess your space and begin crafting a proposal tailored to your vision."
   }
 ];

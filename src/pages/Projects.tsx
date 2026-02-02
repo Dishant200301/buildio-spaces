@@ -15,7 +15,7 @@ const Projects = () => {
   return (
     <>
       <Helmet>
-        <title>Projects | Buildio*</title>
+        <title>Projects | MonoArch*</title>
         <meta
           name="description"
           content="Explore our portfolio of architecture and interior design projects. From residential renovations to new construction."
@@ -24,46 +24,46 @@ const Projects = () => {
 
       <Navbar />
 
-      <main className="pt-32">
-        <section className="py-20 px-4">
-          <div className="container">
+      <main className="pt-24">
+        <section className="py-12 md:py-12 px-6">
+          <div className="px-0 md:px-0 lg:px-10 xl:px-28 mx-auto container">
             <SectionHeader
-              badge="Our Projects"
-              title="Spaces we've transformed"
-              description="Each project tells a story of collaboration, creativity, and commitment to excellence."
-              className="mb-16"
+              badge="Campaigns"
+              title="Explore projects that redefine living"
+              description="Discover curated spaces brought to life through creativity and purpose."
+              className="mb-16 md:mb-20"
             />
 
             <div
               ref={ref}
               className={cn(
-                "space-y-8 opacity-0",
+                "space-y-8 md:space-y-24 opacity-0",
                 isVisible && "animate-fade-in-up opacity-100"
               )}
             >
-              {projects.map((project) => (
+              {projects.slice(0, 4).map((project) => (
                 <div
                   key={project.slug}
-                  className="bg-card rounded-3xl overflow-hidden"
+                  className="bg-[#1f1f1f] rounded-[32px] md:rounded-[48px] overflow-hidden p-6 md:p-12 transition-transform duration-300"
                 >
-                  <div className="grid lg:grid-cols-5 gap-6 p-6 md:p-8">
+                  <div className="flex flex-col lg:grid lg:grid-cols-[1.2fr_1fr] gap-10 md:gap-14 items-center">
                     {/* Content */}
-                    <div className="lg:col-span-3 flex flex-col justify-center">
-                      <h3 className="text-2xl md:text-3xl font-semibold text-foreground mb-4">
+                    <div className="flex flex-col pr-0 lg:pr-8 w-full order-1">
+                      <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-6 leading-[1.15] tracking-tight">
                         {project.title}
                       </h3>
-                      <p className="text-muted-foreground mb-6">
+                      <p className="text-[#a1a1a1] text-[15px] md:text-lg lg:text-xl font-normal mb-8 leading-relaxed max-w-xl">
                         {project.description}
                       </p>
 
                       {/* Meta Info */}
-                      <div className="flex flex-wrap gap-4 mb-6">
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <Building2 className="w-4 h-4" />
+                      <div className="flex flex-col gap-4 mb-8">
+                        <div className="flex items-center gap-3 text-[14px] md:text-[15px] font-medium text-white">
+                          <Building2 className="w-5 h-5 text-white" strokeWidth={1.5} />
                           {project.type}
                         </div>
-                        <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                          <MapPin className="w-4 h-4" />
+                        <div className="flex items-center gap-3 text-[14px] md:text-[15px] font-medium text-white">
+                          <MapPin className="w-5 h-5 text-white" strokeWidth={1.5} />
                           {project.location}
                         </div>
                       </div>
@@ -71,18 +71,15 @@ const Projects = () => {
                       {/* CTA */}
                       <Link
                         to={`/projects/${project.slug}`}
-                        className="inline-flex items-center gap-2 text-foreground hover:gap-3 transition-all w-fit"
+                        className="inline-flex items-center justify-center h-10 md:h-12 px-6 rounded-full bg-[#333333] text-white text-[13px] md:text-[15px] font-medium hover:bg-[#404040] transition-all w-fit group"
                       >
-                        <span className="glass px-4 py-2 rounded-full text-sm">
-                          View in detail
-                        </span>
-                        <ArrowRight className="w-4 h-4" />
+                        View in detail
                       </Link>
                     </div>
 
                     {/* Image */}
-                    <div className="lg:col-span-2">
-                      <div className="rounded-2xl overflow-hidden aspect-[4/3] bg-muted">
+                    <div className="relative w-full mt-4 lg:mt-0 order-2">
+                      <div className="aspect-[3.5/4] md:aspect-square lg:aspect-[5/5] w-full rounded-t-[160px] md:rounded-t-[300px] lg:rounded-t-[250px] rounded-b-[20px] overflow-hidden bg-muted">
                         <img
                           src={project.cardImage}
                           alt={project.title}

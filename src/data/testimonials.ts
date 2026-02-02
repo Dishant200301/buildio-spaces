@@ -10,34 +10,34 @@ export interface Testimonial {
 export const testimonials: Testimonial[] = [
   {
     id: "testimonial-1",
-    name: "Emily Richardson",
-    role: "Homeowner",
-    avatar: "/images/testimonials/emily.jpg",
+    name: "Sarah Jenkins",
+    role: "Interior renovation",
+    avatar: "/images/Testimonials-1.jpg",
     rating: 5,
-    text: "Buildio* transformed our outdated kitchen into the heart of our home. Their attention to detail and understanding of how we actually live made all the difference. We couldn't be happier with the result."
+    text: "The final results were flawless. They created refreshing, clean layouts, and made our entire home feel more livable, spacious, and inviting than we imagined."
   },
   {
     id: "testimonial-2",
-    name: "David Park",
-    role: "Restaurant Owner",
-    avatar: "/images/testimonials/david.jpg",
+    name: "Daniel Hayes",
+    role: "Space planning",
+    avatar: "/images/Testimonials-2.jpg",
     rating: 5,
-    text: "Working with Buildio* on our restaurant redesign was seamless. They balanced aesthetics with functionality perfectly, creating a space that our customers love and our staff can work efficiently in."
+    text: "From the first consultation to the final details, the team delivered. The exterior feels fresh, balanced, and welcoming — a complete upgrade that made a big difference."
   },
   {
     id: "testimonial-3",
-    name: "Amanda Foster",
-    role: "Tech Startup CEO",
-    avatar: "/images/testimonials/amanda.jpg",
+    name: "Jason Miller",
+    role: "Architectural design",
+    avatar: "/images/Testimonials-3.jpg",
     rating: 5,
-    text: "Our new office space has completely changed how our team works. Buildio* understood our culture and designed an environment that promotes both collaboration and focus. Highly recommend!"
+    text: "Every part of the process was handled with precision. The layout, planning, structure, and detailing came together to create a space that’s both functional and beautiful."
   },
   {
     id: "testimonial-4",
-    name: "Robert Martinez",
-    role: "Property Developer",
-    avatar: "/images/testimonials/robert.jpg",
+    name: "Emily Richardson",
+    role: "Homeowner",
+    avatar: "/images/Testimonials-4.jpg",
     rating: 5,
-    text: "I've worked with many architects over my career, and Buildio* stands out for their creativity and professionalism. They delivered a stunning design on time and within budget. True partners."
+    text: "MonoArch* transformed our outdated kitchen into the heart of our home. Their attention to detail and understanding of how we actually live made all the difference."
   }
 ];

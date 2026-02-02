@@ -16,6 +16,7 @@ const ServiceDetails = () => {
   const service = slug ? getServiceBySlug(slug) : undefined;
   const otherServices = slug ? getOtherServices(slug) : [];
   const { ref, isVisible } = useScrollAnimation();
+  const { ref: otherServicesRef, isVisible: otherServicesVisible } = useScrollAnimation();
 
   if (!service) {
     return <Navigate to="/" replace />;
@@ -24,59 +25,54 @@ const ServiceDetails = () => {
   return (
     <>
       <Helmet>
-        <title>{service.title} | Buildio*</title>
+        <title>{service.title} | MonoArch*</title>
         <meta name="description" content={service.shortDescription} />
       </Helmet>
 
       <Navbar />
 
-      <main className="pt-32">
-        <section className="py-12 px-4">
-          <div className="container max-w-5xl">
+      <main className="pt-20">
+        <section className="py-6 lg:py-12 px-6">
+          <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
             {/* Back Button */}
-            <Button
-              asChild
-              variant="ghost"
-              size="sm"
-              className="mb-8 rounded-full"
+            <Link
+              to="/#services"
+              className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary/50 hover:bg-secondary border-2 border-[#202020] transition-colors mb-12"
             >
-              <Link to="/#services">
-                <ArrowLeft className="w-4 h-4 mr-2" />
-                Back to services
-              </Link>
-            </Button>
+              <ArrowLeft className="w-5 h-5" />
+            </Link>
 
             {/* Title & Description */}
             <h1
               ref={ref}
               className={cn(
-                "text-3xl md:text-4xl lg:text-5xl font-semibold text-foreground mb-6 opacity-0",
+                "text-4xl md:text-5xl lg:text-5xl font-bold text-foreground mb-4 opacity-0",
                 isVisible && "animate-fade-in-up opacity-100"
               )}
             >
               {service.title}
             </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mb-12">
+            <p className="text-lg text-muted-foreground max-w-3xl mb-12 opacity-0 animate-fade-in-up animation-delay-100">
               {service.shortDescription}
             </p>
 
             {/* Hero Image */}
-            <div className="rounded-3xl overflow-hidden aspect-video bg-card mb-16">
+            <div className="rounded-xl md:rounded-2xl lg:rounded-3xl h-[400px] md:h-[500px] lg:h-[600px] mx-auto w-[100%] overflow-hidden aspect-video bg-card mb-16 opacity-0 animate-fade-in-up animation-delay-200">
               <img
                 src={service.heroImage}
                 alt={service.title}
-                className="w-full h-full object-cover"
+                className="w-full h-full "
               />
             </div>
 
             {/* Content Sections */}
-            <div className="space-y-12">
+            <div className="space-y-12 max-w-4xl mx-auto">
               {service.sections.map((section) => (
-                <div key={section.id}>
-                  <h2 className="text-2xl font-semibold text-foreground mb-4">
+                <div key={section.id} className="opacity-0 animate-fade-in-up animation-delay-300">
+                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
                     {section.title}
                   </h2>
-                  <p className="text-muted-foreground leading-relaxed">
+                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
                     {section.content}
                   </p>
                 </div>
@@ -86,14 +82,20 @@ const ServiceDetails = () => {
         </section>
 
         {/* Explore Other Services */}
-        <section className="py-20 px-4">
-          <div className="container">
+        <section className="py-20 px-6">
+          <div
+            ref={otherServicesRef}
+            className={cn(
+              "container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto opacity-0",
+              otherServicesVisible && "animate-fade-in-up opacity-100"
+            )}
+          >
             <SectionHeader
               title="Explore other services"
               className="mb-12"
             />
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
               {otherServices.map((otherService) => (
                 <OtherServiceCard key={otherService.slug} service={otherService} />
               ))}
@@ -115,21 +117,23 @@ interface OtherServiceCardProps {
 
 const OtherServiceCard = ({ service }: OtherServiceCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
-  const Icon = service.icon;
 
   return (
     <div
-      className="relative bg-card rounded-3xl p-8 overflow-hidden group"
+      className="relative bg-[#1f1f1f] rounded-[24px] md:rounded-[32px] p-6 md:p-8 overflow-hidden group min-h-[300px] md:min-h-[360px] flex flex-col items-start"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
       {/* Hover Image */}
       <div
         className={cn(
-          "absolute inset-0 transition-all duration-500",
-          isHovered ? "translate-x-0 opacity-30" : "translate-x-full opacity-0"
+          "absolute top-0 right-0 w-[260px] h-[160px] rounded-bl-[100px] rounded-tl-[100px] overflow-hidden transition-all duration-700 ease-out z-0 hidden lg:block",
+          isHovered
+            ? "translate-x-0 opacity-100"
+            : "translate-x-20 opacity-0"
         )}
       >
+        <div className="absolute inset-0 bg-black/20 z-10" />
         <img
           src={service.cardImage}
           alt={service.title}
@@ -137,27 +141,32 @@ const OtherServiceCard = ({ service }: OtherServiceCardProps) => {
         />
       </div>
 
+      {/* Icon */}
+      <div className="relative z-10 w-20 h-20 md:w-32 md:h-32 rounded-full bg-[#141414] flex items-center justify-center mb-6 md:mb-8">
+        <img
+          src={service.icon}
+          alt=""
+          className="w-8 h-8 md:w-14 md:h-14 object-contain invert brightness-0"
+        />
+      </div>
+
       {/* Content */}
       <div className="relative z-10">
-        <div className="w-14 h-14 rounded-full bg-secondary flex items-center justify-center mb-6">
-          <Icon className="w-7 h-7 text-foreground" />
-        </div>
-
-        <h3 className="text-xl font-semibold text-foreground mb-3">
+        <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4">
           {service.title}
         </h3>
-        <p className="text-muted-foreground mb-6 line-clamp-2">
+        <p className="text-muted-foreground/80 text-sm md:text-base leading-relaxed mb-6 md:mb-8 max-w-md">
           {service.shortDescription}
         </p>
+      </div>
 
+      {/* CTA */}
+      <div className="relative z-10 mt-auto">
         <Link
           to={`/services/${service.slug}`}
-          className="inline-flex items-center gap-2 text-foreground hover:gap-3 transition-all"
+          className="inline-flex items-center justify-center h-10 md:h-12 px-5 md:px-6 rounded-full bg-[#2a2a2a] border-2 border-[#404040] text-white text-sm md:text-md font-medium hover:bg-[#4c4c4c] transition-all w-fit group"
         >
-          <span className="glass px-4 py-2 rounded-full text-sm">
-            View in detail
-          </span>
-          <ArrowRight className="w-4 h-4" />
+          View in detail
         </Link>
       </div>
     </div>

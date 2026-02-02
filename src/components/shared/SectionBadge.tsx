@@ -10,7 +10,7 @@ export const SectionBadge = ({ children, className }: BadgeProps) => {
     <div
       className={cn(
         "inline-flex items-center gap-2 px-4 py-2 rounded-full",
-        "glass text-sm text-muted-foreground",
+        "glass border-none text-md text-muted-foreground ",
         className
       )}
     >
