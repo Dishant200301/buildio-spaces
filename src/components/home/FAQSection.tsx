@@ -14,7 +14,7 @@ export const FAQSection = () => {
 
   return (
     <section className="py-12 md:py-20 px-6">
-      <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
+      <div className="container px-0 md:px-0 lg:px-10 xl:px-72 mx-auto">
         <SectionHeader
           badge="FAQs"
           title="Frequently asked questions"
