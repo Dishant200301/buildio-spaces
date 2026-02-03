@@ -3,8 +3,9 @@ import { Building2, MapPin, ArrowRight } from "lucide-react";
 import { projects, getFeaturedProjects } from "@/data/projects";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { Button } from "@/components/ui/button";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+// import { useScrollAnimation } from "@/hooks/useScrollAnimation"; // Removed
 import { cn } from "@/lib/utils";
+import FadeIn from "../shared/FadeIn";
 
 interface ProjectsSectionProps {
   badge?: string;
@@ -21,7 +22,7 @@ export const ProjectsSection = ({
   showViewAll = true,
   limit = 3,
 }: ProjectsSectionProps) => {
-  const { ref, isVisible } = useScrollAnimation();
+  // const { ref, isVisible } = useScrollAnimation(); // Removed
   const featuredProjects = getFeaturedProjects(limit);
 
   return (
@@ -32,29 +33,28 @@ export const ProjectsSection = ({
           title={title}
           description={description}
           className="mb-12 md:mb-16 lg:mb-24"
+          animationType="fade"
         />
 
-        <div
-          ref={ref}
-          className={cn(
-            "space-y-8 md:space-y-12 opacity-0",
-            isVisible && "animate-fade-in-up opacity-100"
-          )}
-        >
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+        <div className="space-y-8 md:space-y-12">
+          {featuredProjects.map((project, index) => (
+            <FadeIn key={project.slug} delay={index * 0.1}>
+              <ProjectCard project={project} />
+            </FadeIn>
           ))}
         </div>
 
         {showViewAll && (
-          <div className="text-center mt-12 md:mt-24">
-            <Link
-              to="/projects"
-              className="inline-flex items-center justify-center h-12 px-6 rounded-full bg-[#2a2a2a] border-2 border-[#404040] text-white text-md font-medium hover:bg-[#4c4c4c] transition-all w-fit group"
-            >
-              View all projects
-            </Link>
-          </div>
+          <FadeIn delay={0.4}>
+            <div className="text-center mt-12 md:mt-24">
+              <Link
+                to="/projects"
+                className="inline-flex items-center justify-center h-12 px-6 rounded-full bg-[#2a2a2a] border-2 border-[#404040] text-white text-md font-medium hover:bg-[#4c4c4c] transition-all w-fit group"
+              >
+                View all projects
+              </Link>
+            </div>
+          </FadeIn>
         )}
       </div>
     </section>

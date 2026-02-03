@@ -6,12 +6,11 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+// import { useScrollAnimation } from "@/hooks/useScrollAnimation"; // Removed
 import { cn } from "@/lib/utils";
+import FadeIn from "../shared/FadeIn";
 
 export const FAQSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section className="py-12 md:py-20 px-6">
       <div className="container px-0 md:px-0 lg:px-10 xl:px-72 mx-auto">
@@ -20,15 +19,10 @@ export const FAQSection = () => {
           title="Frequently asked questions"
           description="Find helpful answers about our services, detailed process, and bringing your vision to life."
           className="mb-16 md:mb-20"
+          animationType="fade"
         />
 
-        <div
-          ref={ref}
-          className={cn(
-            "opacity-0",
-            isVisible && "animate-fade-in-up opacity-100"
-          )}
-        >
+        <FadeIn delay={0.2}>
           <Accordion type="single" collapsible className="space-y-4">
             {faqs.map((faq) => (
               <AccordionItem
@@ -45,7 +39,7 @@ export const FAQSection = () => {
               </AccordionItem>
             ))}
           </Accordion>
-        </div>
+        </FadeIn>
       </div>
     </section>
   );

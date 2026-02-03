@@ -3,12 +3,11 @@ import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { services } from "@/data/services";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+// import { useScrollAnimation } from "@/hooks/useScrollAnimation"; // Removed
 import { cn } from "@/lib/utils";
+import FadeIn from "../shared/FadeIn";
 
 export const ServicesSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section className="py-12 md:py-20 px-6" id="services">
       <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
@@ -17,17 +16,14 @@ export const ServicesSection = () => {
           title="Services that shape spaces"
           description="Building new or upgrading? We craft stylish, inspiring spaces that feel uniquely yours."
           className="mb-12 md:mb-16 lg:mb-20"
+          animationType="fade"
         />
 
-        <div
-          ref={ref}
-          className={cn(
-            "grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 opacity-0",
-            isVisible && "animate-fade-in-up opacity-100"
-          )}
-        >
-          {services.map((service) => (
-            <ServiceCard key={service.slug} service={service} />
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8">
+          {services.map((service, index) => (
+            <FadeIn key={service.slug} delay={index * 0.1} className="h-full">
+              <ServiceCard service={service} />
+            </FadeIn>
           ))}
         </div>
       </div>

@@ -1,40 +1,38 @@
 import { Star } from "lucide-react";
 import { testimonials } from "@/data/testimonials";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+// import { useScrollAnimation } from "@/hooks/useScrollAnimation"; // Removed
 import { cn } from "@/lib/utils";
+import FadeIn from "../shared/FadeIn";
 
 export const TestimonialsSection = () => {
-  const { ref, isVisible } = useScrollAnimation();
-
   return (
     <section className="py-12 md:py-20" id="testimonials">
       <div
-        ref={ref}
-        className={cn(
-          "container px-6 md:px-0 lg:px-10 xl:px-28 mx-auto mb-12 md:mb-20 opacity-0",
-          isVisible && "animate-fade-in-up opacity-100"
-        )}
+        className="container px-6 md:px-0 lg:px-10 xl:px-28 mx-auto mb-12 md:mb-20"
       >
         <SectionHeader
           badge="Testimonials"
           title="Hear from our clients"
           description="Real feedback from real clients who trusted us with their spaces."
+          animationType="fade"
         />
       </div>
 
       {/* Scrolling Cards */}
-      <div className="relative w-full overflow-hidden">
-        {/* Gradient Masks */}
-        <div className="absolute top-0 left-0 h-full w-12 md:w-64 lg:w-[450px] bg-gradient-to-r from-background via-background/95 to-transparent z-10 pointer-events-none" />
-        <div className="absolute top-0 right-0 h-full w-12 md:w-64 lg:w-[450px] bg-gradient-to-l from-background via-background/95 to-transparent z-10 pointer-events-none" />
+      <FadeIn delay={0.2} className="w-full">
+        <div className="relative w-full overflow-hidden">
+          {/* Gradient Masks */}
+          <div className="absolute top-0 left-0 h-full w-12 md:w-64 lg:w-[450px] bg-gradient-to-r from-background via-background/95 to-transparent z-10 pointer-events-none" />
+          <div className="absolute top-0 right-0 h-full w-12 md:w-64 lg:w-[450px] bg-gradient-to-l from-background via-background/95 to-transparent z-10 pointer-events-none" />
 
-        <div className="flex gap-4 md:gap-8 animate-marquee-slow w-max py-4">
-          {[...testimonials, ...testimonials].map((testimonial, index) => (
-            <TestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} />
-          ))}
+          <div className="flex gap-4 md:gap-8 animate-marquee-slow w-max py-4">
+            {[...testimonials, ...testimonials].map((testimonial, index) => (
+              <TestimonialCard key={`${testimonial.id}-${index}`} testimonial={testimonial} />
+            ))}
+          </div>
         </div>
-      </div>
+      </FadeIn>
     </section>
   );
 };

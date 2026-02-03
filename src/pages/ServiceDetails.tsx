@@ -8,15 +8,17 @@ import { Footer } from "@/components/layout/Footer";
 import { Button } from "@/components/ui/button";
 import { CTASection } from "@/components/shared/CTASection";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { useScrollAnimation } from "@/hooks/useScrollAnimation";
+// import { useScrollAnimation } from "@/hooks/useScrollAnimation"; // Removed
 import { cn } from "@/lib/utils";
+import FadeIn from "@/components/shared/FadeIn";
+import StaggerText from "@/components/shared/StaggerText";
 
 const ServiceDetails = () => {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? getServiceBySlug(slug) : undefined;
   const otherServices = slug ? getOtherServices(slug) : [];
-  const { ref, isVisible } = useScrollAnimation();
-  const { ref: otherServicesRef, isVisible: otherServicesVisible } = useScrollAnimation();
+  // const { ref, isVisible } = useScrollAnimation(); // Removed
+  // const { ref: otherServicesRef, isVisible: otherServicesVisible } = useScrollAnimation(); // Removed
 
   if (!service) {
     return <Navigate to="/" replace />;
@@ -35,47 +37,51 @@ const ServiceDetails = () => {
         <section className="py-6 lg:py-12 px-6">
           <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
             {/* Back Button */}
-            <Link
-              to="/#services"
-              className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary/50 hover:bg-secondary border-2 border-[#202020] transition-colors mb-12"
-            >
-              <ArrowLeft className="w-5 h-5" />
-            </Link>
+            <FadeIn>
+              <Link
+                to="/#services"
+                className="inline-flex items-center justify-center w-12 h-12 rounded-full bg-secondary/50 hover:bg-secondary border-2 border-[#202020] transition-colors mb-12"
+              >
+                <ArrowLeft className="w-5 h-5" />
+              </Link>
+            </FadeIn>
 
             {/* Title & Description */}
-            <h1
-              ref={ref}
-              className={cn(
-                "text-4xl md:text-5xl lg:text-5xl font-bold text-foreground mb-4 opacity-0",
-                isVisible && "animate-fade-in-up opacity-100"
-              )}
-            >
-              {service.title}
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-3xl mb-12 opacity-0 animate-fade-in-up animation-delay-100">
-              {service.shortDescription}
-            </p>
+            <FadeIn>
+              <h1 className="text-4xl md:text-5xl lg:text-5xl font-bold text-foreground mb-4">
+                {service.title}
+              </h1>
+            </FadeIn>
+            <FadeIn delay={0.2}>
+              <p className="text-lg text-muted-foreground max-w-3xl mb-12">
+                {service.shortDescription}
+              </p>
+            </FadeIn>
 
             {/* Hero Image */}
-            <div className="rounded-xl md:rounded-2xl lg:rounded-3xl h-[400px] md:h-[500px] lg:h-[600px] mx-auto w-[100%] overflow-hidden aspect-video bg-card mb-16 opacity-0 animate-fade-in-up animation-delay-200">
-              <img
-                src={service.heroImage}
-                alt={service.title}
-                className="w-full h-full "
-              />
-            </div>
+            <FadeIn delay={0.3} className="w-full">
+              <div className="rounded-xl md:rounded-2xl lg:rounded-3xl h-[400px] md:h-[500px] lg:h-[600px] mx-auto w-[100%] overflow-hidden aspect-video bg-card mb-16">
+                <img
+                  src={service.heroImage}
+                  alt={service.title}
+                  className="w-full h-full "
+                />
+              </div>
+            </FadeIn>
 
             {/* Content Sections */}
             <div className="space-y-12 max-w-4xl mx-auto">
-              {service.sections.map((section) => (
-                <div key={section.id} className="opacity-0 animate-fade-in-up animation-delay-300">
-                  <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
-                    {section.title}
-                  </h2>
-                  <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
-                    {section.content}
-                  </p>
-                </div>
+              {service.sections.map((section, index) => (
+                <FadeIn key={section.id} delay={0.4 + (index * 0.1)}>
+                  <div className="">
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                      {section.title}
+                    </h2>
+                    <p className="text-muted-foreground text-base md:text-lg leading-relaxed">
+                      {section.content}
+                    </p>
+                  </div>
+                </FadeIn>
               ))}
             </div>
           </div>
@@ -83,24 +89,21 @@ const ServiceDetails = () => {
 
         {/* Explore Other Services */}
         <section className="py-20 px-6">
-          <div
-            ref={otherServicesRef}
-            className={cn(
-              "container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto opacity-0",
-              otherServicesVisible && "animate-fade-in-up opacity-100"
-            )}
-          >
-            <SectionHeader
-              title="Explore other services"
-              className="mb-12"
-            />
+          <FadeIn delay={0.2}>
+            <div className="container px-0 md:px-0 lg:px-10 xl:px-28 mx-auto">
+              <SectionHeader
+                title="Explore other services"
+                className="mb-12"
+                animationType="fade"
+              />
 
-            <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
-              {otherServices.map((otherService) => (
-                <OtherServiceCard key={otherService.slug} service={otherService} />
-              ))}
+              <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-6">
+                {otherServices.map((otherService) => (
+                  <OtherServiceCard key={otherService.slug} service={otherService} />
+                ))}
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </section>
 
         <CTASection />
