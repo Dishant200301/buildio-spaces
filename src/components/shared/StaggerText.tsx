@@ -48,21 +48,24 @@ const StaggerText = ({
                 text.chars,
                 {
                     opacity: 0,
-                    scale: 1.2,
-                    y: 10 // added a little y movement for smoother feel
+                    y: 20,
+                    rotation: 0.01, // Force GPU
+                    z: 0.01,
+                    willChange: "transform, opacity",
                 },
                 {
                     opacity: 1,
-                    scale: 1,
                     y: 0,
+                    rotation: 0,
+                    z: 0,
                     duration: 1,
                     delay: delay,
                     stagger: stagger,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: containerRef.current,
-                        start: "top 80%", // Animation starts when top of element hits 80% of viewport height
-                        toggleActions: "play none none reverse", // Replays on re-entry if desired, or just "play none none none" for once
+                        start: "top 80%",
+                        toggleActions: "play none none reverse",
                     }
                 }
             );
